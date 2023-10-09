@@ -5,10 +5,11 @@ import { useActions } from '../../hooks/useActions';
 function RecipeItem({recipe}) {
   const { favorites } = useSelector(state => state);
   const {toggleFavorites} = useActions();
-  const isExists = favorites.some(r => r.id === recipe.id);
+  const isExists = favorites.some(r => r._id === recipe._id);
 
   return (
     <div className='my-5 bg-zinc-700 p-3 rounded-lg'>
+      <img src={recipe.image} alt={recipe.name} className='w-24 rounded-lg' />
       <h2 className='mb-1'>{recipe.name}</h2>
       <button 
       onClick={() => toggleFavorites(recipe)}
