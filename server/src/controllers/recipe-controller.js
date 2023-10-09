@@ -9,6 +9,18 @@ class RecipeController {
             next(e);
         }
     }
+
+    async addRecipe(req, res, next) {
+        try {
+            const addRecipeService = await recipeService.addRecipe(
+                req.body.name,
+                req.body.image
+            );
+            res.status(201).json(addRecipeService);
+        } catch (e) {
+            next(e);
+        }
+    }
 }
 
 export default new RecipeController();

@@ -4,12 +4,16 @@ const API_URL = process.env.REACT_APP_STAGE === 'development' ? process.env.REAC
 
 export const api = createApi({
   reducerPath: 'api',
+  tagTypes: ['Recipe'],
   baseQuery: fetchBaseQuery({
     baseUrl: API_URL
   }),
   endpoints: builder => ({
     getRecipes: builder.query({
-      query: () => '/'
+      query: () => '/',
+      providesTags: () => [{
+        type: 'Recipe'
+      }]
     }),
   })
 })
